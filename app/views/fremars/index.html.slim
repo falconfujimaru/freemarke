@@ -1,0 +1,19 @@
+h1 出品商品一覧
+= link_to '新規登録', new_fremar_path, class: 'btn btn-primary'
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Fremar.human_attribute_name(:name)
+      th= Fremar.human_attribute_name(:created_at)
+      th
+  tbody
+    - @fremars.each do |fremar|
+      tr
+        td= link_to fremar.name, fremar
+        td= fremar.created_at
+        td
+          = link_to '編集', edit_fremar_path(fremar), class: 'btn btn-primary mr-3'
+          = link_to '削除', fremar, method: :delete, data: { confirm: "#{fremar.name}を削除します｡よろしいですか？" },
+          class: 'btn btn-danger'
