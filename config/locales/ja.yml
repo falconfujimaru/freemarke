@@ -13,7 +13,11 @@ ja:
       fremar: 
         id: ID
         name: 商品名
-        description: 詳細
+        price: 価格
+        seller: 出品者
+        email: メールアドレス
+        description: 商品詳細
+        image: 商品画像
         created_at: 登録日時
         updated_at: 更新日時
   date:

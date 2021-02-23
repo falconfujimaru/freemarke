@@ -1,7 +1,5 @@
 h1 商品詳細
 
-.nav.justify-content-expand
-  = link_to '一覧', fremars_path, class: 'nav-link'
 table.table.table-hover
   tbody
     tr
@@ -11,14 +9,30 @@ table.table.table-hover
       th= Fremar.human_attribute_name(:name)
       td= @fremar.name
     tr
+      th= Fremar.human_attribute_name(:price)
+      td= @fremar.price
+    tr
       th= Fremar.human_attribute_name(:description)
       td= simple_format(h(@fremar.description), {}, sanitize: false, wrapper_tag: "div")
+    tr
+      th= Fremar.human_attribute_name(:image)
+      td= image_tag @fremar.image if @fremar.image.attached?
+    tr
+      th= Fremar.human_attribute_name(:seller)
+      td= @fremar.seller
+    tr
+      th= Fremar.human_attribute_name(:email)
+      td= @fremar.email
     tr
       th= Fremar.human_attribute_name(:created_at)
       td= @fremar.created_at
     tr
       th= Fremar.human_attribute_name(:updated_at)
       td= @fremar.updated_at
+br
+  .nav.justify-content-expand
+    = link_to '商品一覧', fremars_path, class: 'btn btn-primary'
+
 = link_to '編集', edit_fremar_path, class: 'btn btn-primary mr-3'
 = link_to '削除', @fremar, method: :delete, data: { confirm: "#{@fremar.name}を削除します｡よろしいですか？" },
           class: 'btn btn-danger'
